@@ -1,0 +1,9 @@
+body { overflow-y: auto; }              /* let browser handle it */
+html { scrollbar-gutter: stable; } 
+.footer {
+  text-align: left;
+  padding: 1rem;
+  color: #aaa;
+  background: #000;
+  font-size: 0.8rem;
+}

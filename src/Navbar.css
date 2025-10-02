@@ -1,0 +1,106 @@
+/* === NAVBAR WRAPPER === */
+.navbar{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 2000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  background: transparent;
+  color:white;
+}
+
+/* Make sure content never hides under fixed bar */
+ /* adjust to your navbar height */
+
+/* Reset UL defaults so spacing is consistent everywhere */
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* === LEFT SIDE (logo + menu) === */
+.nav-left{
+  display: flex;
+  align-items: center;
+  gap: 1rem;                 /* IMPORTANT: no global gap here */
+}
+.nav-left a{
+text-decoration: none;
+  color: inherit;
+}
+.nav-left .logo img{
+  width: 9rem;
+  height: auto;
+  display: block;         /* removes inline-gap from images */
+}
+
+/* Space between menu items, but NOT before the first one (the logo) */
+.nav-left > li + li {
+  margin-left: 2rem;      /* fixed, predictable spacing */
+}
+
+.nav-left .part-2{
+    display:flex;
+    gap:5rem;
+}
+/* Optional active look */
+.active-link{
+  font-weight: 600;
+  text-shadow: 0 0 6px rgba(255,255,255,.7), 0 0 12px rgba(255,255,255,.5);
+}
+
+/* === RIGHT SIDE (search + account) — unchanged behavior === */
+.nav-right{
+  display: flex;
+  align-items: center;
+  gap: 1rem;              /* only affects right column */
+}
+
+.nav-right .search{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.nav-right a{
+text-decoration: none;
+  color: inherit;
+}
+
+.nav-right .search img{ width: 20px; height: 20px; display: block; }
+
+.nav-right .search input{
+  width: 10rem;           /* fixed width so it never shrinks/expands */
+  height: 30px;
+  padding: 0 .75rem;
+  border: none; outline: none;
+  border-radius: 4px;
+  background: rgba(255,255,255,.92);
+  color: #000;
+}
+
+/* Account + dropdown exactly as before… */
+.account{ position: relative; cursor: pointer; }
+.account img{ width: 22px; height: 22px; display: block; }
+
+.dropdown{
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 220px;
+  background: #0f0f0f;
+  border: 1px solid #454545;
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 2100;
+}
+.dropdown ul{ margin:0; padding:.5rem 0; display:flex; flex-direction:column; gap:.25rem; }
+.dropdown ul li{
+  width:100%;
+  padding:.6rem 1rem;
+  box-sizing:border-box;
+  transition: background-color .2s ease, color .2s ease;
+}
+.dropdown ul li:hover{ background:#fff; color:#000; }

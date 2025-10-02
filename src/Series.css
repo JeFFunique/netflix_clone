@@ -1,0 +1,13 @@
+.series-page .list-displayed{
+    display:flex;
+    flex-wrap: wrap;
+    margin-left:3rem;
+}
+.series-page{
+    margin-top:5rem;
+    position:relative;
+}
+.series-page h1{
+    color:white;
+    margin-left: 5.5rem;
+}

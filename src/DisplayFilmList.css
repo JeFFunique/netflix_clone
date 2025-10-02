@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap');
+:root{
+  --row-pad: 2.5rem;
+  --gap: 2rem;
+  --arrow-space:2.5rem;
+   /* room so last card never sits under the right arrow */
+}
+
+/* Section */
+.film-display { color:#fff; margin:0; padding:0; }
+.film-display h2 { margin: 1rem 0 1rem var(--row-pad); }
+
+/* ==== CAROUSEL WRAPPER ==== */
+.carousel{
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;            /* its own stacking context (MDN) */
+}
+
+/* ==== SCROLL ROW ==== */
+.list-displayed{
+  position: relative;
+  z-index: 1;                    /* keeps row below arrows */
+  display: flex;
+  gap: var(--gap);
+  padding-left: var(--row-pad);
+  padding-right: var(--arrow-space);
+  scroll-padding-left: 2.5rem;   /* reserve space for the right arrow */
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* Snap setup */
+  scroll-snap-type: x mandatory;      /* MDN */
+  scroll-snap-stop: always;           /* don’t skip snap points */
+  scroll-padding-left: var(--row-pad);/* first card aligns with h2 edge */
+  scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* IE/Edge */
+  -webkit-overflow-scrolling: touch;  /* smoother on iOS */
+}
+.list-displayed::-webkit-scrollbar{ display:none; }
+
+/* ==== CARD ==== */
+.container{
+  flex: 0 0 auto;                 /* never shrink/stretch */
+  width: 200px;
+  aspect-ratio: 2 / 3;
+  position: relative;
+  border-radius: 12px;
+  background: #000;
+  scroll-snap-align: start;       /* snap per card */
+  overflow: visible;              /* let the inner scale spill visually */
+  z-index: 2;   
+  cursor:pointer;                  /* below arrows, above row background */
+}
+
+/* Inner content scales; flex item size stays fixed */
+.card-inner{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;               /* keep rounded corners */
+  transform-origin: center;
+  transition: transform .15s ease, opacity .15s ease;
+  will-change: transform; 
+  font-family: 'Poppins', sans-serif;      /* hint for smooth scaling */
+}
+
+.container-active{ z-index: 100; }  /* hovered card above arrows if you prefer */
+.container-active .card-inner{
+  transform: scale(1.1);
+  
+}
+
+/* Optional: keep edges from looking clipped when scaling */
+.list-displayed .container:first-child .card-inner{ transform-origin: left center; }
+.list-displayed .container:last-child  .card-inner{ transform-origin: right center; }
+
+.container img{
+  width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;
+  transition: opacity .2s ease;
+}
+.container-active .card-inner img{ opacity:.5; }
+
+/* ==== OVERLAY TEXT ==== */
+.movie-card{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: .8rem;
+  padding: 1.2rem;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.9) 0%,
+    rgba(0,0,0,0.6) 40%,
+    rgba(0,0,0,0) 100%
+  );
+  color: #fff;
+
+  /* Direct appearance (no movement) */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .2s ease-out, visibility .2s ease-out;
+  z-index: 2; /* above gradient */
+}
+.movie-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.9) 0%,
+    rgba(0,0,0,0.6) 40%,
+    rgba(0,0,0,0) 100%
+  );
+  z-index: -1; /* behind text */
+  pointer-events: none;
+}
+.container-active .movie-card{   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+   pointer-events: auto;    /* smooth rise on hover */ }
+
+.movie-card h3{
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+
+  /* Crisp text */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;}
+.movie-card p{
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #e6e6e6;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  /* Crispness */
+  -webkit-font-smoothing: antialiased;
+ 
+}
+.movie-card h3,
+.movie-card p {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+}
+
+/* ==== FAVORITE BUTTON ==== */
+.favorite-btn{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.75);
+  background: rgba(0,0,0,.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top:0.5rem;
+  opacity: 0;
+  transition: opacity .2s ease, box-shadow .25s ease, border-color .25s ease;
+  cursor: pointer;
+}
+.favorite-btn img{ width:70%; height:70%; }
+.container-active .favorite-btn{ opacity:1; }
+.favorite-btn:hover {
+  border-color: #fff;
+  box-shadow: 0 0 12px rgba(255,255,255,.9);
+}
+/* ==== SCROLL BUTTONS ==== */
+.scroll-btn{
+  position:absolute;
+  top:50%;
+  transform: translate3d(0,-50%,0);   /* force compositor layer (Chrome quirk) */
+  will-change: transform;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  z-index: 1000;                      /* above posters */
+  width:44px; height:44px;
+  display:flex; align-items:center; justify-content:center;
+  border:none; border-radius:50%;
+  background:rgba(0,0,0,.6); color:#fff; font-size:24px; cursor:pointer;
+  transition: background .25s ease, box-shadow .25s ease;
+}
+.scroll-btn.left  { left:.5rem; }
+.scroll-btn.right { right:.5rem; }
+.scroll-btn:hover { background:rgba(255,255,255,.85); color:#000; box-shadow:0 0 14px rgba(255,255,255,.5); }

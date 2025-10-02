@@ -1,0 +1,123 @@
+.film-panel{
+    position:relative;
+    height:40rem;
+    display:flex;
+    align-items:center;
+    background-repeat: no-repeat;
+    width:100%;
+    background-size: cover;      /* scales & zooms without stretching */
+    background-position: center; 
+}
+.film-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.4),  /* darker left side */
+    rgba(0, 0, 0, 0.1)   /* almost transparent on right */
+  );
+  z-index: 0; /* stays behind everything */
+}
+
+.front-panel{
+  color:white;
+  position:relative;
+  z-index: 1;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 5rem;
+  margin-top:5rem;
+  gap:1rem;
+}
+.buttons{
+    display:flex;
+    gap:1rem;
+}
+.play{
+    display:flex;
+    align-items: center;
+    gap:0.5rem;
+    padding-left:1.5rem;
+    padding-right:1.5rem;
+    border-radius: 5px;
+    border:1px solid white;
+    cursor:pointer;
+    font-size: 1.2em;
+    background-color: white;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.play:hover {
+opacity:0.8;
+}
+.play img{
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+.play span{
+   font-size: 1.2rem;     /* same as icon */
+  line-height: 50px;
+}
+
+.description{
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 30rem; /* keep same width constraint */
+  font-size: 1.5rem;
+  margin: 0;
+}
+.front-panel h1 {
+    width: 30rem;
+    height: fit-content;
+    margin:0;
+}
+.front-panel p {
+  font-size: 1rem;
+}
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* puts video behind content */
+}
+
+.video-background iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;    /* force viewport width */
+  height: 56.25vw; /* 16:9 ratio based on width */
+  min-height: 100vh;
+  min-width: 177.77vh; /* 16:9 ratio based on height */
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* so clicks go through to your buttons */
+}
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+.popup-content {
+  background: #111;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  color: white;
+}
