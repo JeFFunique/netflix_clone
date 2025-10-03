@@ -5,7 +5,7 @@ import { useState } from 'react';
 import axios from 'axios';
 function VideoPlayer({ movieClicked, onClose }) {
   const [watchTime, setWatchTime] = useState(0);
-  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedUser = JSON.parse(sessionStorage.getItem("user"));
   const userId = storedUser?.id;
   const API_URL = process.env.REACT_APP_API_URL;
     const handleTimeUpdate = (e) => {
