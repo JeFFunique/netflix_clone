@@ -24,11 +24,11 @@ function VideoPlayer({ movieClicked, onClose }) {
     } catch (err) {
       console.error("Error updating watch record", err);
     }
+    onClose();
   }
   else {
-    return null;
+    onClose();
   }
-  onClose(); // close the player
   };
 
   return createPortal(
