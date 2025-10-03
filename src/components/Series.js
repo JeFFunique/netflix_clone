@@ -10,6 +10,8 @@ const [isplaying, setIsPlaying] = useState(false);
 const timer = useRef(null);
 const API_URL = process.env.REACT_APP_API_URL;
 const [movieClicked, setMovieClicked] = useState(null);
+const storedUser = JSON.parse(sessionStorage.getItem("user"));
+const userId = storedUser?.id;
 useEffect(() => {
 const fetchSeries = async () => {
     axios.get(`${API_URL}/api/movies/only/series`)
@@ -31,7 +33,8 @@ timer.current=null;
 }
     setMovie_hovered(null);
 }
-  const handleFavorite = async (movie) => {
+const handleFavorite = async (movie) => {
+    if(userId) {
     try {
       await axios.post(`${API_URL}/api/movies/sync/add_movie`, {
         tmdbId:movie.tmdbId,
@@ -44,6 +47,10 @@ timer.current=null;
       });
     } catch (err) {
       console.error("Error adding favorites:", err);
+    }
+  }
+    else{
+      return null;
     }
   };
 const handleClick = async (movie) => {

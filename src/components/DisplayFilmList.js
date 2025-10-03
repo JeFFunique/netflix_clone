@@ -111,6 +111,7 @@ useLayoutEffect(() => {
 
   // Favorite
   const handleFavorite = async (movie) => {
+    if(userId) {
     try {
       await axios.post(`${API_URL}/api/movies/sync/add_movie`, {
         tmdbId:movie.tmdbId,
@@ -123,6 +124,10 @@ useLayoutEffect(() => {
       });
     } catch (err) {
       console.error("Error adding favorites:", err);
+    }
+  }
+    else{
+      return null;
     }
   };
 
