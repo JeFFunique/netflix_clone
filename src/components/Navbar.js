@@ -53,10 +53,10 @@ return (
     <ul>
     <li className="logo"><img src={logo} alt="Fakeflix" /></li></ul>
     <ul className='part-2'>
-    <li><Link to="/"       className={activePath==='/'        ? 'active-link' : ''} onClick={() => handlePath('/')}>Accueil</Link></li>
-    <li><Link to="/series" className={activePath==='/series'  ? 'active-link' : ''} onClick={() => handlePath('/series')}>Séries</Link></li>
-    <li><Link to="/films"  className={activePath==='/films'   ? 'active-link' : ''} onClick={() => handlePath('/films')}>Films</Link></li>
-    <li><Link to="/favoris"className={activePath==='/favoris' ? 'active-link' : ''} onClick={() => handlePath('/favoris')}>Mes favoris</Link></li>
+    <li><Link to="/"       className={activePath==='/'        ? 'active-link' : ''} onClick={() => handlePath('/')}>Home</Link></li>
+    <li><Link to="/series" className={activePath==='/series'  ? 'active-link' : ''} onClick={() => handlePath('/series')}>Series</Link></li>
+    <li><Link to="/films"  className={activePath==='/films'   ? 'active-link' : ''} onClick={() => handlePath('/films')}>Movies</Link></li>
+    <li><Link to="/favoris"className={activePath==='/favoris' ? 'active-link' : ''} onClick={() => handlePath('/favoris')}>My List</Link></li>
     </ul>
   </ul>
 
