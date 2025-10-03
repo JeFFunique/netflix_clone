@@ -61,7 +61,7 @@ const handleClick = async (movie) => {
 return(
     <>
 <div className="series-page">
-   <h1>Séries</h1>
+   <h1>Series</h1>
 <div className='list-displayed'>
 {series.map(movie => {
   const isActive = movie_hovered?.tmdbId === movie.tmdbId;

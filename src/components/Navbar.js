@@ -13,6 +13,8 @@ function Navbar({search, setSearch, resultSearch, setResultSearch}) {
     const API_URL = process.env.REACT_APP_API_URL;
     const timer = useRef(null);
     const closeTimer = useRef(null);
+    const storedUser = JSON.parse(sessionStorage.getItem("user"));
+    const userId = storedUser?.id;
       useEffect(() => {
     if(timer.current) clearTimeout(timer.current);
     if(search.trim() === ""){
@@ -69,10 +71,10 @@ return (
       {open && (
         <div className="dropdown">
           <ul>
-            <li><Link to="/login">Se Connecter</Link></li>
-            <li><Link to="/create">Créer un nouveau compte</Link></li>
-            <li><Link to="/logout">Se déconnecter</Link></li>
-            <li><Link to="/login">Changer de profil</Link></li>
+            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/create">Create an account</Link></li>
+            {userId ? <li><Link to="/logout">Log out</Link></li> : null }
+            <li><Link to="/login">Change profile</Link></li>
           </ul>
         </div>
       )}

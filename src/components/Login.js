@@ -53,7 +53,7 @@ function Login({setUser}) {
     return (
          <div className="login-container">
       <form className="login-form login-page" onSubmit={handleSubmit}>
-        <h2>Se Connecter</h2>
+        <h2>Login</h2>
         <input
           type="email"
           name="email"
@@ -72,9 +72,9 @@ function Login({setUser}) {
           required
         />
         <div className="signup-link">
-        <p>Pas encore de compte ? <Link to="/create">Créer un compte</Link></p>
+        <p>No account yet ? <Link to="/create">Create an account</Link></p>
         </div>
-        <button type="submit">Se Connecter
+        <button type="submit">Login
         </button>
         <div className="message">
          {messageLogin && (

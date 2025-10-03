@@ -57,7 +57,7 @@ return (
     </button>
     <button className="play" onClick={() => setShowPopup(true)}>
     <img src={infos}/>
-    <span>Plus d'infos</span>
+    <span>More infos</span>
     </button>
     </div>
 </div>
@@ -70,7 +70,7 @@ return (
           >
             <h2>{most_popular_movie.title}</h2>
             <p>{most_popular_movie.overview}</p>
-            <button onClick={() => setShowPopup(false)}>Fermer</button>
+            <button onClick={() => setShowPopup(false)}>Close</button>
           </div>
         </div>
       )}

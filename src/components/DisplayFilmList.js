@@ -3,6 +3,7 @@ import VideoPlayer from './VideoPlayer';
 import { useState, useRef, useEffect, useLayoutEffect} from 'react';
 import add_50 from '../images/add_50.png';
 import axios from 'axios';
+import genres from "./genres";
 function DisplayFilmList({favorites, user_recommendations, trending, general_recommendations, mostWatchedGenre}){
   const [movie_hovered, setMovie_hovered] = useState(null);
   const [isplaying, setIsPlaying] = useState(false);
@@ -10,7 +11,9 @@ function DisplayFilmList({favorites, user_recommendations, trending, general_rec
   const [movieClicked, setMovieClicked] = useState(null);
   const rows = ["favorites", "user-recommendations", "trending", "general"];
   const API_URL = process.env.REACT_APP_API_URL;
+  const defaultGenre = genres["28"];
   const storedUser = JSON.parse(sessionStorage.getItem("user"));
+  const mostWatchedGenreName = genres[mostWatchedGenre] || "";
   const userId = storedUser?.id;
   const [showLeft, setShowLeft] = useState({
     favorites: false,
@@ -182,7 +185,7 @@ return(
                 </div>
               </div>
             );
-          })) : <p>Veuillez vous identifier pour voir votre liste</p>}
+          })) : <p>Login to see your list</p>}
           {isplaying && <VideoPlayer movieClicked={movieClicked} onClose={() => setIsPlaying(false)} />}
         </div>
 
@@ -194,7 +197,7 @@ return(
       </div>
     </div>
   <div className="film-display">
-      <h2>Parce que vous avez regardé {mostWatchedGenre}</h2>
+       {userId ? <h2>Because you have watched {mostWatchedGenreName} movies</h2> : <h2>Because you have watched {defaultGenre} movies</h2>}
       <div className="carousel">
         {showLeft["user-recommendations"] && (
           <button className="scroll-btn left" onClick={(e) => {
@@ -251,7 +254,7 @@ return(
     </div>
   
   <div className="film-display">
-      <h2>Les Tendances</h2>
+      <h2>Trending</h2>
       <div className="carousel">
         {showLeft["trending"] && (
           <button className="scroll-btn left" onClick={(e) => {
@@ -305,7 +308,7 @@ return(
       </div>
     </div>
   <div className="film-display">
-      <h2>Vos Recommendations</h2>
+      <h2>Your Recommendations</h2>
       <div className="carousel">
         {showLeft["general"] && (
           <button className="scroll-btn left" onClick={(e) => {
