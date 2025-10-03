@@ -12,7 +12,7 @@ import Footer from './components/Footer';
 import Login from './components/Login';
 import Logout from './components/Logout';
 import CreateNewAccount from './components/CreateNewAccount';
-import genres from "../genres";
+import genres from "./genres";
 function App() {
 const [favorites, setFavorites] = useState([]);
 const [user_recommendations, setUser_recommendations] = useState([]);
