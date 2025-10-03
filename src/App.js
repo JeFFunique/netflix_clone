@@ -57,7 +57,7 @@ useEffect(() => {
           setMostWatchedGenre(genre);
 
           const [allData, popularRes] = await Promise.all([
-            axios.get(`${API_URL}/api/movies/all/${genre}/35/${userId}`),
+            axios.get(`${API_URL}/api/movies/all/${genre}//${userId}`),
             axios.get(`${API_URL}/api/movies/movie_most_popular`),
           ]);
 
