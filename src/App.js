@@ -21,6 +21,7 @@ const [most_popular_movie, setMost_popular_movie] = useState(null);
 const [search, setSearch] = useState("");
 const [resultSearch, setResultSearch] = useState([]);
 const [mostWatchedGenre, setMostWatchedGenre] = useState("");
+ const defaultGenre = genres["10749"];
 const API_URL = process.env.REACT_APP_API_URL;
 const [user, setUser] = useState(
   JSON.parse(sessionStorage.getItem("user")) || null
@@ -57,7 +58,7 @@ useEffect(() => {
           setMostWatchedGenre(genre);
 
           const [allData, popularRes] = await Promise.all([
-            axios.get(`${API_URL}/api/movies/all/${genre}//${userId}`),
+            axios.get(`${API_URL}/api/movies/all/${genre}/${defaultGenre}/${userId}`),
             axios.get(`${API_URL}/api/movies/movie_most_popular`),
           ]);
 
