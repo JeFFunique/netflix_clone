@@ -13,6 +13,7 @@ function DisplayFilmList({favorites, user_recommendations, trending, general_rec
   const API_URL = process.env.REACT_APP_API_URL;
   const storedUser = JSON.parse(sessionStorage.getItem("user"));
   const mostWatchedGenreName = genres[mostWatchedGenre] || "";
+  const defaultGenre = genres["10749"];
   const userId = storedUser?.id;
   const [showLeft, setShowLeft] = useState({
     favorites: false,
