@@ -148,7 +148,7 @@ return(
           className="list-displayed"
           onScroll={() => handleScrollUpdate("favorites")}
         >
-         {userId && (favorites.map((movie) => {
+         {userId ? (favorites.map((movie) => {
             const isActive = movie_hovered?.tmdbId === movie.tmdbId;
             return (
               <div
@@ -177,7 +177,7 @@ return(
                 </div>
               </div>
             );
-          }))};
+          })) : <p>Veuillez vous identifier pour voir votre liste</p>}
           {isplaying && <VideoPlayer movieClicked={movieClicked} onClose={() => setIsPlaying(false)} />}
         </div>
 
