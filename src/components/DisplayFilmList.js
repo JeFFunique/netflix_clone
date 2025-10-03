@@ -3,7 +3,7 @@ import VideoPlayer from './VideoPlayer';
 import { useState, useRef, useEffect, useLayoutEffect} from 'react';
 import add_50 from '../images/add_50.png';
 import axios from 'axios';
-import genres from "./genres";
+import genres from "../genres";
 function DisplayFilmList({favorites, user_recommendations, trending, general_recommendations, mostWatchedGenre}){
   const [movie_hovered, setMovie_hovered] = useState(null);
   const [isplaying, setIsPlaying] = useState(false);
