@@ -10,6 +10,8 @@ function DisplayFilmList({favorites, user_recommendations, trending, general_rec
   const [movieClicked, setMovieClicked] = useState(null);
   const rows = ["favorites", "user-recommendations", "trending", "general"];
   const API_URL = process.env.REACT_APP_API_URL;
+  const storedUser = JSON.parse(sessionStorage.getItem("user"));
+  const userId = storedUser?.id;
   const [showLeft, setShowLeft] = useState({
     favorites: false,
     "user-recommendations": false,
@@ -146,7 +148,7 @@ return(
           className="list-displayed"
           onScroll={() => handleScrollUpdate("favorites")}
         >
-          {favorites.map((movie) => {
+         {userId && (favorites.map((movie) => {
             const isActive = movie_hovered?.tmdbId === movie.tmdbId;
             return (
               <div
@@ -175,7 +177,7 @@ return(
                 </div>
               </div>
             );
-          })}
+          }))};
           {isplaying && <VideoPlayer movieClicked={movieClicked} onClose={() => setIsPlaying(false)} />}
         </div>
 
