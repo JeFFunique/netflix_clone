@@ -57,7 +57,7 @@ useEffect(() => {
           setMostWatchedGenre(genre);
 
           const [allData, popularRes] = await Promise.all([
-            axios.get(`${API_URL}/api/movies/all/${genre}/35`),
+            axios.get(`${API_URL}/api/movies/all/${genre}/35/${userId}`),
             axios.get(`${API_URL}/api/movies/movie_most_popular`),
           ]);
 
@@ -77,7 +77,7 @@ useEffect(() => {
           axios.get(`${API_URL}/api/movies/movie_most_popular`),
         ]);
 
-        setFavorites(allData.data.favorites);
+        setFavorites([]);
         setUser_recommendations(allData.data.userBased);
         setTrending(allData.data.trending);
         setGeneral_recommendations(allData.data.generalBased);

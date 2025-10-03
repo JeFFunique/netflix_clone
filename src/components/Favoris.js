@@ -7,6 +7,8 @@ function Favoris({favoris}) {
     const [isplaying, setIsPlaying] = useState(false);
     const timer = useRef(null);
     const [movieClicked, setMovieClicked] = useState(null);
+    const storedUser = JSON.parse(sessionStorage.getItem("user"));
+    const userId = storedUser?.id;
     const handleHoverEnter = (movie) => {
         if(timer.current) clearTimeout(timer.current);
     timer.current = window.setTimeout(() => {
@@ -29,7 +31,7 @@ return(
 <div className="series-page">
   <h1>My List</h1>
 <div className='list-displayed'>
-{favoris.map(movie => {
+{userId && (favoris.map(movie => {
   const isActive = movie_hovered?.tmdbId === movie.tmdbId;
             return (
               <div
@@ -48,7 +50,7 @@ return(
                 </div>
               </div>
             );
-          })}
+          }))}
           {isplaying && <VideoPlayer movieClicked={movieClicked} onClose={() => setIsPlaying(false)} />}
         </div>
         </div>

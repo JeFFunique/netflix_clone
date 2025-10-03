@@ -24,16 +24,16 @@ timer.current=null;
 }
     setMovie_hovered(null);
 }
-const handleFavorite = async (movie) => {
+  const handleFavorite = async (movie) => {
     if(userId) {
     try {
-      await axios.post(`${API_URL}/api/movies/sync/add_movie`, {
+      await axios.post(`${API_URL}/api/favorites/add/${userId}`, {
         tmdbId:movie.tmdbId,
         title:movie.title,
         overview:movie.overview,
         imageUrl:movie.imageUrl,
         backgroundImageUrl:movie.backgroundImageUrl,
-        category:null,
+        category:"FAVORITES",
         genreIds:movie.genreIds
       });
     } catch (err) {
