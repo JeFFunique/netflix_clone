@@ -1,39 +1,40 @@
-🎬 Netflix Clone – Application Web Full-Stack
+🎬 Netflix Clone
 
-Projet personnel reproduisant l’expérience de la plateforme Netflix, développé avec React.js et Spring Boot.
-L’objectif : concevoir une application complète avec authentification, recommandations personnalisées et une interface moderne et fluide.
+Bienvenue sur le projet Netflix Clone ! Cette application full-stack recrée l’expérience de la plateforme Netflix, avec une interface moderne, un catalogue dynamique et des recommandations personnalisées.
 
-🚀 Fonctionnalités principales
+🌍 Démo en ligne
 
-Connexion sécurisée (JWT)
-
-Catalogue dynamique alimenté par l’API TMDB
-
-Recommandations selon l’historique de visionnage
-
-Lecteur vidéo, favoris et recherche intégrée
-
-Interface responsive et animations fluides
+🚀 Découvrez la version déployée sur Vercel :
+👉 Netflix Clone – Voir la démo
 
 🧰 Stack technique
-Front-end
+🎨 Front-end
 
-Technologie : React.js
+Framework : React.js
 
 Déploiement : Vercel
 
-Code source : https://github.com/JeFFunique/netflix-clone
+Code source : Front-end GitHub
 
-Back-end
+⚙️ Back-end
 
 Technologie : Java / Spring Boot
 
+Base de données : PostgreSQL (hébergée sur Neon
+)
+
 Hébergement : Zeabur
 
-Base de données : PostgreSQL (Neon)
+Code source : Back-end GitHub
 
-Code source : https://github.com/JeFFunique/backend_netflix_clone
+🎯 Fonctionnalités principales
 
-🌐 Démo en ligne
+🔐 Connexion sécurisée (JWT)
 
-👉 Voir le projet déployé ici
+🎞️ Catalogue dynamique avec l’API TMDB
+
+💡 Recommandations basées sur l’historique de visionnage
+
+❤️ Gestion des favoris et recherche intégrée
+
+📱 Interface responsive avec animations fluides
