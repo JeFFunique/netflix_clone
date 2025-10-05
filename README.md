@@ -3,7 +3,7 @@
 Projet personnel reproduisant l’expérience de la plateforme Netflix, développé avec React.js et Spring Boot.
 L’objectif : concevoir une application complète avec authentification, recommandations personnalisées et une interface moderne et fluide.
 
-🚀 Fonctionnalités principales :
+🚀 Fonctionnalités principales
 
 Connexion sécurisée (JWT)
 
@@ -15,16 +15,25 @@ Lecteur vidéo, favoris et recherche intégrée
 
 Interface responsive et animations fluides
 
-🧰 Stack technique :
+🧰 Stack technique
+Front-end
 
-Frontend : React.js (déployé sur Vercel)
+Technologie : React.js
 
-Backend : Java / Spring Boot (hébergé sur Zeabur)
+Déploiement : Vercel
 
-Base de données : PostgreSQL (hébergée sur Neon)
+Code source : https://github.com/JeFFunique/netflix-clone
+
+Back-end
+
+Technologie : Java / Spring Boot
+
+Hébergement : Zeabur
+
+Base de données : PostgreSQL (Neon)
+
+Code source : https://github.com/JeFFunique/backend_netflix_clone
 
 🌐 Démo en ligne
 
 👉 Voir le projet déployé ici
-
-💻 Code source : https://github.com/JeFFunique/netflix_clone
