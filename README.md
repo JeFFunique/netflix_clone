@@ -23,6 +23,8 @@ Backend : Java / Spring Boot (hébergé sur Zeabur)
 
 Base de données : PostgreSQL (hébergée sur Neon)
 
-🌐 Démo en ligne : 👉 Voir le projet déployé ici
+🌐 Démo en ligne
+
+👉 Voir le projet déployé ici
 
 💻 Code source : https://github.com/JeFFunique/netflix_clone
