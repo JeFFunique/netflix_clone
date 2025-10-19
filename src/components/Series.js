@@ -74,7 +74,7 @@ return(
                 onClick={() => handleClick(movie)}
               >
                 <div className="card-inner">
-                  <img src={movie.imageUrl} alt={movie.title} />
+                  <img src={movie.imageUrl} alt={movie.name} />
                   <div className="movie-card">
                     <button
                       className="favorite-btn"
@@ -85,7 +85,7 @@ return(
                     >
                       <img src={add_50} alt="Add to favorites" />
                     </button>
-                    <h3>{movie.title}</h3>
+                    <h3>{movie.name}</h3>
                     <p>{movie.overview}</p>
                   </div>
                 </div>
