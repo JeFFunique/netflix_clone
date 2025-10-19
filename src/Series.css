@@ -3,7 +3,7 @@
     justify-content: start;
     flex-wrap: wrap;
     gap:2rem;
-    margin-left:3rem;
+    margin-left:8rem;
 }
 .series-page{
     margin-top:5rem;
@@ -11,5 +11,5 @@
 }
 .series-page h1{
     color:white;
-    margin-left: 5.5rem;
+    margin-left: 8rem;
 }
