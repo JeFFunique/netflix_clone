@@ -70,3 +70,9 @@
   font-weight: bold;
   margin-top: 1rem;
 }
+.info-msg {
+  color: #ffa500;  /* warm amber/orange tone */
+  font-weight: bold;
+  margin-top: 1rem;
+  font-style: italic;
+}

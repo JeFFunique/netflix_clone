@@ -16,6 +16,8 @@ const userId = storedUser?.id;
 const API_URL = process.env.REACT_APP_API_URL;
 const timer = useRef(null);
 const navigate = useNavigate();
+const [loading, setLoading] = useState(false);
+const [status, setStatus] = useState("");
 const [messageCreate, setMessageCreate] = useState({
   type:"error",
   text:""
@@ -26,9 +28,38 @@ const handleChange= (e) => {
         [e.target.name]:e.target.value
     }))
 }
+const checkDbReady = async () => {
+  try {
+    const res = await axios.get(`${API_URL}/api/health/db`, { timeout: 2000 });
+    return res.status === 200;
+  } catch (err) {
+    return false;
+  }
+};
 const handleSubmit = async (e) => {
 e.preventDefault();
+setMessageCreate(null);
 if(!userId) {
+    setMessageCreate({
+    type: "info",
+    text: "⏳ Checking server status..."
+  });
+  let ready = await checkDbReady();
+    if (!ready) {
+    setMessageCreate({
+      type: "info",
+      text: "💤 Waking up the server, please wait 5–10s..."
+    });
+    for (let i = 0; i < 5; i++) {
+      await new Promise(r => setTimeout(r, 2000)); // wait 2s
+      ready = await checkDbReady();
+      if (ready) break;
+    }
+  }
+  setMessageCreate({
+    type: "info",
+    text: "🚀 Server ready! Creating your account..."
+  });
 try{
     const response = await axios.post(`${API_URL}/api/users/create`, formData)
     if(response.data.success===true){
@@ -112,7 +143,13 @@ else {
         <button type="submit">Créer un compte</button>
         <div className='message'>
          {messageCreate && (
-         <p className={messageCreate.type==='success' ? "success-msg" : "error-msg"}>{messageCreate.text}</p>
+         <p className={
+    messageCreate.type === "success"
+      ? "success-msg"
+      : messageCreate.type === "error"
+      ? "error-msg"
+      : "info-msg"
+  }>{messageCreate.text}</p>
         )}
         </div>
       </form>
