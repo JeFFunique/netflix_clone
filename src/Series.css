@@ -1,6 +1,8 @@
 .series-page .list-displayed{
     display:flex;
+    justify-content: start;
     flex-wrap: wrap;
+    gap:2rem;
     margin-left:3rem;
 }
 .series-page{
