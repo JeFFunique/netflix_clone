@@ -29,7 +29,7 @@ const handleClick = async (movie) => {
 return(
 <>
 <div className="series-page">
-  {userId ? <h1>My List</h1> : <p>Login to see your list</p>}
+  {userId ? <h1>My List</h1> : <p className="see">Login to see your list</p>}
 <div className='list-displayed'>
 {userId && (favoris.map(movie => {
   const isActive = movie_hovered?.tmdbId === movie.tmdbId;
