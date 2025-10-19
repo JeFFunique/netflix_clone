@@ -140,7 +140,7 @@ else {
           onChange={handleChange}
           required
         />
-        <button type="submit">Créer un compte</button>
+        <button type="submit">Create an account</button>
         <div className='message'>
          {messageCreate && (
          <p className={
