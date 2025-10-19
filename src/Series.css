@@ -8,6 +8,7 @@
     margin-top:5rem;
     display:flex;
     justify-content: center;
+    flex-direction: column;
 }
 .series-page h1{
     color:white;
