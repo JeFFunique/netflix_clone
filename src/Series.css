@@ -1,6 +1,7 @@
 .series-page .list-displayed{
     display:flex;
-    flex-wrap: nowrap;
+    justify-content: space-between;
+    flex-wrap: wrap;
     margin-left:3rem;
 }
 .series-page{
