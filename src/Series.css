@@ -3,13 +3,13 @@
     justify-content: start;
     flex-wrap: wrap;
     gap:2rem;
-    margin-left:8rem;
 }
 .series-page{
     margin-top:5rem;
-    position:relative;
+    display:flex;
+    justify-content: center;
 }
 .series-page h1{
     color:white;
-    margin-left: 8rem;
+    margin-left: 5.5rem;
 }
